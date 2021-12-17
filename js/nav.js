@@ -34,3 +34,13 @@ function updateNavOnLogin() {
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
 }
+
+/** Add new story functionality */
+
+function navAddStory(event) {
+  event.preventDefault()
+  $addForm.toggleClass('isVisible')
+}
+//document.querySelector('#nav-submit').addEventListener('click',navAddStory)
+
+$navSubmit.on('click', navAddStory);

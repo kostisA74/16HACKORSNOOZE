@@ -50,3 +50,20 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+/** Handles 'adding new story' event  
+ * 
+ */
+
+ async function addNewStory (event) {
+  event.preventDefault()
+  console.log('clicked')
+  const author = $authorInput.val()
+  const title = $titleInput.val()
+  const url = $urlInput.val()
+  //console.log(`${author}, ${title}, ${url}`)
+  await storyList.addStory(currentUser,{author,title,url})
+  putStoriesOnPage()
+}
+
+$submitNew.on('click', addNewStory)

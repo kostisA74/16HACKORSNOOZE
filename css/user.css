@@ -12,3 +12,17 @@
 .account-forms-container {
   padding-left: 20px;
 }
+
+#addForm {
+  background-color: #f6f6ef;
+  width: 100%;
+  left: 0px;
+  margin: auto;
+  visibility: hidden;
+  display: none;
+}
+
+#addForm.isVisible {
+  visibility: visible;
+  display: block;
+}

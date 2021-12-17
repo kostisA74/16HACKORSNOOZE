@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="css/user.css">
   <link rel="stylesheet" href="css/stories.css">
   <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/form.css">
 </head>
 
 <body>
@@ -37,13 +38,31 @@
   <div class="navbar-brand">
     <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
   </div>
+  <div class="nav-left">
+    <a class="nav-link" href="" id="nav-submit">submit</a>
+  </div>
   <div class="nav-right">
     <a class="nav-link" href="#" id="nav-login">login/signup</a>
     <a class="nav-link" href="#" id="nav-user-profile"></a>
     <a class="hidden" id="nav-logout" href="#"><small>(logout)</small></a>
   </div>
 </nav>
-
+<form action="" id="addForm">
+  <div>
+    <label for="authorInput">author</label>
+    <input type="text" placeholder="author name" id="authorInput">
+  </div>
+  <div>
+    <label for="titleInput">title</label>
+    <input type="text" placeholder="story title" id="titleInput">
+  </div>
+  <div>
+    <label for="urlInput">url</label>
+  <input type="text" placeholder="story url" id="urlInput">
+  </div>
+  <button type="submit" id="submitNew">submit</button>
+  <hr>
+</form>
 <!-- area for stories (all stories, user stories, favorites) -->
 <section class="stories-container container">
 
