@@ -42,4 +42,5 @@
 }
 .favMarker.marked:after{
   content: ' \2665'; /* White heart*/
+  color: red;
 }

@@ -41,6 +41,27 @@ function navAddStory(event) {
   event.preventDefault()
   $addForm.toggleClass('isVisible')
 }
-//document.querySelector('#nav-submit').addEventListener('click',navAddStory)
+
+function navFavorites(event) {
+  event.preventDefault()
+  console.debug("navFavorites", event);
+  hidePageComponents();
+  putFavoritesOnPage();
+}
+
+function navMyStories(event) {
+  event.preventDefault()
+  console.debug("navMystories", event);
+  hidePageComponents();
+  putMyStoriesOnPage();
+  $('.storyDel').on('click', (event)=>{
+    deleteStory(getId(event))
+    //document.querySelector(`#${event.target.id}`).parentElement.remove()
+    $(`#${event.target.id}`).parent().remove()
+  })
+  markFavorites()
+}
 
 $navSubmit.on('click', navAddStory);
+$navFavorites.on('click', navFavorites);
+$navMyStories.on('click', navMyStories);

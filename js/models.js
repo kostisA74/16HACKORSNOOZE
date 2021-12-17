@@ -235,13 +235,12 @@ class User {
         )
       this.favorites.splice(this.favorites.indexOf(story),1)
     }
-    
   }
 //https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
   /** Removing a story from favorites */
 
-  removeFromFavoritesArray(story){
+  /*removeFromFavoritesArray(story){
     this.favorites.splice(this.favorites.indexOf(story),1)
-  }
+  }*/
 
 }

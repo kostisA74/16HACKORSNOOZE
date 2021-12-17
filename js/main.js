@@ -16,7 +16,7 @@ const $navUserProfile = $("#nav-user-profile");
 const $navLogOut = $("#nav-logout");
 const $navSubmit = $("#nav-submit")
 const $navFavorites = $("#nav-favorites")
-const $myStories = $("#nav-myStories")
+const $navMyStories = $("#nav-myStories")
 
 const $submitNew = $("#submitNew")
 const $authorInput = $("#authorInput")
@@ -51,19 +51,20 @@ async function start() {
     updateUIOnUserLogin();
    
   }
-  //add event listener to favMarkers 
-  /*[...document.querySelectorAll('.favMarker')].forEach((element)=>{
-    element.addEventListener('click', (event)=>{
-      $(`#${event.target.id}`).toggleClass('marked')
-      currentUser.addToFavoritesArray(getId(event))
-    } )
-  })*/
+  //add event listener to favorite Markers 
 
   $('.favMarker').on('click', (event)=>{
     $(`#${event.target.id}`).toggleClass('marked')
     currentUser.addToFavoritesArray(getId(event))
   } )
   
+  //add event listener to del buttons
+  // $('.storyDel').on('click', (event)=>{
+  //   console.log("Clicked")
+  //   deleteStory(getId(Event))
+  //   $(`#${event.target.id}`).parent().remove()
+  // })
+
 }
 
 
