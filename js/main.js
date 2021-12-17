@@ -15,6 +15,8 @@ const $navLogin = $("#nav-login");
 const $navUserProfile = $("#nav-user-profile");
 const $navLogOut = $("#nav-logout");
 const $navSubmit = $("#nav-submit")
+const $navFavorites = $("#nav-favorites")
+const $myStories = $("#nav-myStories")
 
 const $submitNew = $("#submitNew")
 const $authorInput = $("#authorInput")
@@ -45,8 +47,26 @@ async function start() {
   await getAndShowStoriesOnStart();
 
   // if we got a logged-in user
-  if (currentUser) updateUIOnUserLogin();
+  if (currentUser) {
+    updateUIOnUserLogin();
+   
+  }
+  //add event listener to favMarkers 
+  /*[...document.querySelectorAll('.favMarker')].forEach((element)=>{
+    element.addEventListener('click', (event)=>{
+      $(`#${event.target.id}`).toggleClass('marked')
+      currentUser.addToFavoritesArray(getId(event))
+    } )
+  })*/
+
+  $('.favMarker').on('click', (event)=>{
+    $(`#${event.target.id}`).toggleClass('marked')
+    currentUser.addToFavoritesArray(getId(event))
+  } )
+  
 }
+
+
 
 // Once the DOM is entirely loaded, begin the app
 
@@ -55,3 +75,7 @@ console.warn("HEY STUDENT: This program sends many debug messages to" +
   " seeing those helpful debug messages. In your browser console, click on" +
   " menu 'Default Levels' and add Verbose");
 $(start);
+
+
+
+

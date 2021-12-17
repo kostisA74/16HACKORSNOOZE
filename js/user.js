@@ -113,5 +113,6 @@ function updateUIOnUserLogin() {
   $allStoriesList.show();
 
   updateNavOnLogin();
+  markFavorites()
 }
 

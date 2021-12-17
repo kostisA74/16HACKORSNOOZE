@@ -8,8 +8,9 @@ let storyList;
 async function getAndShowStoriesOnStart() {
   storyList = await StoryList.getStories();
   $storiesLoadingMsg.remove();
-
+  
   putStoriesOnPage();
+  
 }
 
 /**
@@ -25,6 +26,8 @@ function generateStoryMarkup(story) {
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">
+        <span class="storyDel">&#128465;</span>
+        <span class="favMarker" id="star${story.storyId}"></span>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -33,6 +36,11 @@ function generateStoryMarkup(story) {
         <small class="story-user">posted by ${story.username}</small>
       </li>
     `);
+}
+
+// get id of story marked as favorite
+function getId(event){
+  return event.target.parentElement.id
 }
 
 /** Gets list of stories from server, generates their HTML, and puts on page. */
@@ -57,13 +65,18 @@ function putStoriesOnPage() {
 
  async function addNewStory (event) {
   event.preventDefault()
-  console.log('clicked')
   const author = $authorInput.val()
   const title = $titleInput.val()
   const url = $urlInput.val()
-  //console.log(`${author}, ${title}, ${url}`)
   await storyList.addStory(currentUser,{author,title,url})
   putStoriesOnPage()
 }
 
 $submitNew.on('click', addNewStory)
+
+// Marks story with filled heart after login of user
+function markFavorites(){
+  for (let element of currentUser.favorites){
+    $(`#star${element.storyId}`).addClass('marked')
+  }
+}

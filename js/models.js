@@ -88,7 +88,8 @@ class StoryList {
     }
     const response = await axios.post(urlAPI,newStory)
     const story = new Story(response.data.story)
-    this.stories.unshift(story)
+    this.stories.unshift(story) //adds the new story to the stories array to make it available immediately
+    user.ownStories.unshift(story) //adds new story to the user's stories array to make it available immediately
     return story
   }
 }
@@ -208,4 +209,39 @@ class User {
       return null;
     }
   }
+
+  /** Adding a story to favorites */
+
+  async addToFavoritesArray(id){
+    const story = storyList.stories.filter((el)=>{
+      return el.storyId === id
+    })[0]
+    const iDs = this.favorites.map((element=>{
+      return element.storyId
+    }))
+
+    if (iDs.indexOf(id) ===-1) {
+      this.favorites.unshift(story)
+    //posting story to favorites
+      await axios.post(
+        `https://hack-or-snooze-v3.herokuapp.com/users/${this.username}/favorites/${id}`,
+        {"token": this.loginToken}
+        )
+    }else{
+    //deleting story from favorites
+      await axios.delete(
+        `https://hack-or-snooze-v3.herokuapp.com/users/${this.username}/favorites/${id}`,
+        {data: {token: this.loginToken}}
+        )
+      this.favorites.splice(this.favorites.indexOf(story),1)
+    }
+    
+  }
+//https://hack-or-snooze-v3.herokuapp.com/users/username/favorites/storyId
+  /** Removing a story from favorites */
+
+  removeFromFavoritesArray(story){
+    this.favorites.splice(this.favorites.indexOf(story),1)
+  }
+
 }

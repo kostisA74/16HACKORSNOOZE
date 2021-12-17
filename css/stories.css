@@ -36,3 +36,10 @@
 .story-user {
   display: block;
 }
+
+.favMarker:after{
+  content: ' \2661'; /* Empty heart*/
+}
+.favMarker.marked:after{
+  content: ' \2665'; /* White heart*/
+}
