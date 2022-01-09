@@ -53,10 +53,10 @@ async function start() {
   }
   //add event listener to favorite Markers 
 
-  $('.favMarker').on('click', (event)=>{
-    $(`#${event.target.id}`).toggleClass('marked')
-    currentUser.addToFavoritesArray(getId(event))
-  } )
+  // $('.favMarker').on('click', (event)=>{
+  //   $(`#${event.target.id}`).toggleClass('marked')
+  //   currentUser.addToFavoritesArray(getId(event))
+  // } )
   
   //add event listener to del buttons
   // $('.storyDel').on('click', (event)=>{
